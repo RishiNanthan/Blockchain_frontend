@@ -34,6 +34,12 @@ nav a:hover{
 }
 
 
+.home-img{
+    margin-left: 20px;
+    user-select: none;
+}
+
+
 .address button{
     background: none;
     box-shadow: 2px 5px 20px gray;
@@ -41,6 +47,7 @@ nav a:hover{
     color: lightgray;
     user-select: none;
     outline: none;
+    cursor: pointer;
 }
 
 .address button:hover{

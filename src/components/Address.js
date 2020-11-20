@@ -66,8 +66,10 @@ class Address extends Component{
                     {
                         this.state.public_key !== "" && 
                         <p> 
-                            Your new <b>Public Key: </b>{ this.state.public_key } <br />
-                            Your new <b>Private Key: </b>{ this.state.private_key }
+                            Your new <b>Public Key: &nbsp; &nbsp;</b>
+                            <span style={{color: "red", fontWeight: "bold"}}> { this.state.public_key } </span><br />
+                            Your new <b>Private Key: &nbsp; &nbsp;</b>
+                            <span style={{color: "red", fontWeight: "bold"}}> { this.state.private_key } </span>
                         </p>
                     }
                     {
