@@ -21,3 +21,28 @@ nav a:first-child{
     font-weight: bolder;
     font-size: 3vw;
 }
+
+nav a:hover{
+    border-bottom: 2px solid gray;
+    color: lightgray;
+    transition: 0.5s;
+}
+
+.container{
+    width: 90%;
+    margin: auto;
+}
+
+
+.address button{
+    background: none;
+    box-shadow: 2px 5px 20px gray;
+    padding: 1%;
+    color: lightgray;
+    user-select: none;
+    outline: none;
+}
+
+.address button:hover{
+    border: 2px solid gray;
+}

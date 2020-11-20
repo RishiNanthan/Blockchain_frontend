@@ -12,7 +12,7 @@ function Navigation(props){
                 <Link to="/block">Blocks</Link>
                 <Link to="/other">Others</Link>
             </nav>
-            <div style={{height: "10vh"}}>
+            <div style={{height: "8vw"}}>
 
             </div>
         </Fragment>
