@@ -20,9 +20,21 @@ function NewTransaction(props){
 
     const changePage = props.change_page;
 
-    let initial_data = {
-        inputs: [], 
-        outputs: [],
+    let transaction_data = {
+        inputs: [
+            {
+                previous_transction: "",
+                value: null,
+                index: null,
+                script: "",
+            }
+        ], 
+        outputs: [
+            {
+                value: null,
+                script: ""
+            }
+        ],
         description: "",
         timestamp: "",
         public_key: "",
@@ -30,8 +42,40 @@ function NewTransaction(props){
         transaction_id: "",
     }
 
-    const setData = () => {
 
+    const setData = (key, value) => {
+        if(key === "description")
+            transaction_data.description = value;
+        else if(key === "timestamp")
+            transaction_data.timestamp = value;
+        else if(key === "public_key")
+            transaction_data.public_key = value;
+        else if(key === "signature")
+            transaction_data.signature = value;
+        else if(key === "transaction_id")
+            transaction_data.transaction_id = value;
+        else if(key === "input"){
+            let index = value.index;
+            let inner_key = value.key;
+            
+            if(inner_key === "previous_transaction")
+                transaction_data.inputs[index].previous_transaction = value.value;
+            else if(inner_key === "value")
+                transaction_data.inputs[index].value = value.value;
+            else if(inner_key === "index")
+                transaction_data.inputs[index].index = value.value;
+            else if(inner_key === "script")
+                transaction_data.inputs[index].script = value.value;
+        }
+        else if(key === "output"){
+            let index = value.index;
+            let inner_key = value.key;
+
+            if(inner_key === "value")
+                transaction_data.outputs[index].value = value.value;
+            else if(inner_key === "script")
+                transaction_data.outputs[index].script = value.value;
+        }
     }
 
 
@@ -56,6 +100,12 @@ function NewTransaction(props){
                             new_inputs.push(<Input index={input_length} key={input_length} />);
                             new_state.inputs = new_inputs;
                             set_transaction_state(new_state);
+                            transaction_data.inputs.push({
+                                previous_transaction: "",
+                                index: null,
+                                value: null,
+                                script: "",
+                            })
                         }}>
                              Inputs +   
                         </span> 
@@ -74,6 +124,10 @@ function NewTransaction(props){
                             new_outputs.push(<Output index={output_length} key={output_length} />)
                             new_state.outputs = new_outputs;
                             set_transaction_state(new_state);
+                            transaction_data.outputs.push({
+                                value: null,
+                                script: "",
+                            })
                         } }>
                              Outputs + 
                         </span> 
