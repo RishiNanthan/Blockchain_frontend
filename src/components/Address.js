@@ -57,7 +57,7 @@ class Address extends Component{
                         &nbsp; &nbsp; This is the sharable part of your account. It is needed for other parties
                         to send you money. <br /> <br />
                         <b>Private Key</b> <br /> <br />
-                        &nbsp; &nbsp; This key must not be shared to anyone. If anyone holds your money, they 
+                        &nbsp; &nbsp; This key must not be shared to anyone. If anyone holds your private key, they 
                         can easily handle all your currency. <i>Only create new addresses by using trusted applications. </i>
                         Don't use random websites or applications for creating your address. They could have a copy of 
                         private keys. 

@@ -33,6 +33,15 @@ nav a:hover{
     margin: auto;
 }
 
+.btn{
+    cursor: pointer;
+}
+
+.btn:hover{
+    color: lightblue;
+    text-decoration: underline;
+}
+
 
 .home-img{
     margin-left: 20px;
@@ -53,3 +62,70 @@ nav a:hover{
 .address button:hover{
     border: 2px solid gray;
 }
+
+.transaction i{
+    color: lightsteelblue;
+}
+
+.transaction h3{
+    cursor: pointer;
+}
+
+.transaction h3:hover{
+    color: lightskyblue;
+    text-decoration: underline;
+}
+
+.transaction button{
+    background: none;
+    box-shadow: 2px 5px 20px gray;
+    padding: 1%;
+    margin: 3%;
+    color: lightgray;
+    user-select: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.transaction button:hover{
+    border: 2px solid gray;
+}
+
+
+.new-transaction input{
+    width: 80%;
+    margin: auto;
+    background: none;
+    outline: none;
+    border: none;
+    margin-left: 3%;
+    padding: 2%;
+    font-size: medium;
+    color: lightskyblue;
+    box-shadow: 2px 5px 20px gray;
+}
+
+.new-transaction textarea{
+    background: none;
+    margin: 3%;
+    border: none;
+    outline: none;
+    width: 80%;
+    color: lightskyblue;
+    height: 50px;
+    font-size: larger;
+    resize: none;
+    padding: 2%;
+    box-shadow: 2px 5px 20px gray;
+}
+
+
+.input{
+    width: 70%;
+}
+
+
+.output{
+    width: 70%;
+}
+
