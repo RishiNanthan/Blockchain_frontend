@@ -1,15 +1,12 @@
 import React, { useState } from 'react';
 
-const initial_output = {
-    value: "",
-    script: "",
-}
-
 
 function Output(props){
     const index = props.index;
+    const set_data = props.set_data;
+    const output_state = props.data;
+    const remove_output = props.remove_output;
 
-    const [ output_state, set_output_state ] = useState(initial_output);
     const [ hide, set_hide ] = useState(false);
 
     return (
@@ -24,15 +21,23 @@ function Output(props){
                 <div>
                     <input type="text" value={ output_state.value } placeholder="Value" onChange={ event => {
                         event.persist();
-                        set_output_state({ ...output_state, value: event.target.value });
+                        set_data("output", {
+                            index: index,
+                            key: "value",
+                            value: event.target.value,
+                        });
                     }} />
 
                     <textarea value={ output_state.script } placeholder="Script" onChange={ event => {
                         event.persist();
-                        set_output_state({ ...output_state, script: event.target.value });
+                        set_data("output", {
+                            index: index,
+                            key: "script",
+                            value: event.target.value,
+                        });
                     }}>
                     </textarea>
-                    <button>Remove</button>
+                    <button onClick={ event => remove_output(index) }>Remove</button>
                 </div>
             }
         </div>

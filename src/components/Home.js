@@ -2,7 +2,6 @@ import React, { Component, Fragment } from 'react';
 
 import Navigation from './layouts/Navigation';
 import blockchain_img1 from './images/blockchain.jpg';
-import blockchain_img2 from './images/blockchain1.jpg';
 
 class Home extends Component{
     constructor(props){

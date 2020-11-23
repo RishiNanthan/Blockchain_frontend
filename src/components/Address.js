@@ -20,8 +20,7 @@ class Address extends Component{
             "/create_address"
         )
         .then( res => {
-            console.log(res); 
-            return res.json() 
+            return res.json();
         } )
         .then( data => {
             this.setState({
@@ -49,10 +48,12 @@ class Address extends Component{
                     <p>
                         Address is like the account number for your account. It consists of two components
                         namely,
-                        <ul>
-                            <li>Public Key</li>
-                            <li>Private Key</li>
-                        </ul>
+                    </p>
+                    <ul>
+                        <li>Public Key</li>
+                        <li>Private Key</li>
+                    </ul>
+                    <p>
                         <b>Public Key</b><br/> <br/>
                         &nbsp; &nbsp; This is the sharable part of your account. It is needed for other parties
                         to send you money. <br /> <br />
