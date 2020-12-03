@@ -120,11 +120,10 @@ function TransactionHistory(props){
 
     return (
         <div className="transaction container">
-            <h4>
-                <span style={{fontSize: 25}}>History</span> &nbsp; &nbsp; 
-                <span className="btn" onClick={ event => changePage(0) }>Transaction</span> &nbsp; &nbsp;
-                <span className="btn" onClick={ event => changePage(1) }>New Transaction</span> 
-            </h4>
+            <button onClick={ event => changePage(0) }>Transaction</button>
+            <button onClick={ event => changePage(1) }>New Transaction</button>
+            <button disabled={ true } >History</button> 
+
             <div className="transaction-history">
                 <input type="text" placeholder="Public Key" value={public_key} onChange={ event => {
                     event.persist();

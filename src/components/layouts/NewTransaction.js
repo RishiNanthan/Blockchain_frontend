@@ -145,11 +145,9 @@ function NewTransaction(props){
     return (
         <div className="transaction container">
             <div className="new-transaction">
-                <h4>
-                    New Transaction &nbsp; &nbsp; 
-                    <span className="btn" onClick={ event => changePage(2) }>History</span> &nbsp; &nbsp;
-                    <span className="btn" onClick={ event => changePage(0) }>Transaction</span>
-                </h4>
+                    <button onClick={ event => changePage(0) }>Transaction</button>
+                    <button disabled={true}> New Transaction </button>
+                    <button onClick={ event => changePage(2) }>History</button>
                 <hr />
                 <div className="inputs">
                     <h3>

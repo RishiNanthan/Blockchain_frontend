@@ -6,10 +6,10 @@ function TransactionHome(props){
 
     return (
         <div className="container transaction">
-            <h3 style={{cursor: "pointer"}} onClick={ event => changePage(0) }>Transaction</h3>
             <div>
+                <button disabled={true}>Transaction</button>
                 <button onClick={ event => changePage(1) }>New Transaction</button>
-                <button onClick={ event => changePage(2) }>Transaction History</button>
+                <button onClick={ event => changePage(2) }>History</button>
             </div>
             <p>
                 &nbsp; &nbsp; Transaction refers to the transfer of currency from one party to one or more parties.
