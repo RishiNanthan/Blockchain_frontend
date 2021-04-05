@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
 import Navigation from './layouts/Navigation';
-
+import { generateKeys } from '../functionality/APICalls';
 
 class Address extends Component{
     constructor(props){
@@ -16,21 +16,25 @@ class Address extends Component{
     }
 
     getAddress(){
-        fetch(
-            "/create_address"
-        )
-        .then( res => {
-            return res.json();
-        } )
-        .then( data => {
-            this.setState({
-                public_key: data.public_key,
-                private_key: data.private_key,
-                error_msg: "",
-            })
+        generateKeys().then( data => {
+
+            if(data.error){
+                this.setState({
+                    public_key: "",
+                    private_key: "",
+                    error_msg: data.msg,
+                });    
+            }
+            else{
+                this.setState({
+                    public_key: data.data.public_key,
+                    private_key: data.data.private_key,
+                    error_msg: "",
+                })
+            }
         })
         .catch( error => {
-            console.log(error);
+
             this.setState({
                 public_key: "",
                 private_key: "",

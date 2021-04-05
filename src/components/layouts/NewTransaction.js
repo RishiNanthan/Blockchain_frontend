@@ -24,6 +24,11 @@ function NewTransaction(props){
                 script: "",
             },
         ],
+        question: {
+            question: "",
+            question_id: "",
+            answer_hash: "",
+        },
         description: "",
         timestamp: "",
         public_key: "",
@@ -70,9 +75,18 @@ function NewTransaction(props){
             else if(inner_key === "script")
                 new_transaction_state.outputs[index].script = value.value;
         }
-        console.log(new_transaction_state);
+        else if(key === "question"){
+            let inner_key = value.key;
+            if(inner_key === "question")
+                new_transaction_state.question.question = value.value;
+            else if(inner_key === "question_id")
+                new_transaction_state.question.question_id = value.value;
+            else if(inner_key === "answer_hash"){
+                new_transaction_state.question.answer_hash = value.value;
+            }
+        }
+        
         set_transaction_state(new_transaction_state);
-
     }
 
     const removeInput = (index) => {
@@ -87,7 +101,6 @@ function NewTransaction(props){
             inputs.push(input);
         }
         new_state.inputs = inputs;
-        console.log(new_state);
         set_transaction_state(new_state);
     }
 
@@ -103,7 +116,6 @@ function NewTransaction(props){
             outputs.push(output);
         }
         new_state.outputs = outputs;
-        console.log(new_state);
         set_transaction_state(new_state);
     }
 
@@ -227,7 +239,6 @@ function NewTransaction(props){
                     set_transaction_state({ ...transaction_state, transaction_id: event.target.value });
                 }} /><br /><br />
                 <hr />
-
                 {
                     error_msg !== "" &&
                     <p style={{color: "red"}}>&nbsp; &nbsp; { error_msg } </p> 
