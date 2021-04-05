@@ -93,7 +93,7 @@ nav a:hover{
 }
 
 
-.new-transaction input{
+input{
     width: 80%;
     margin: auto;
     background: none;
@@ -130,15 +130,10 @@ nav a:hover{
     width: 70%;
 }
 
-.transaction-history input{
-    width: 80%;
-    margin: auto;
-    background: none;
-    outline: none;
-    border: none;
-    margin-left: 3%;
-    padding: 2%;
-    font-size: medium;
-    color: lightskyblue;
-    box-shadow: 2px 5px 20px gray;
+.link{
+    cursor: pointer;
+}
+
+.link:hover{
+    color: lightblue;
 }

@@ -1,13 +1,14 @@
 import React, { Component, Fragment } from 'react';
 
 import Navigation from './layouts/Navigation';
+import BlockHome from './layouts/BlockHome';
 
 
 class Block extends Component{
     constructor(props){
         super(props);
         this.state = {
-
+            
         }
     }
 
@@ -16,7 +17,7 @@ class Block extends Component{
             <Fragment>
                 <Navigation />
                 <div className="container blocks">
-                    <h3>Block</h3>
+                    <BlockHome />
                 </div>
             </Fragment>
         );
