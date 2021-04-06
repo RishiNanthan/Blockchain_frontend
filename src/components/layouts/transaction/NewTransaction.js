@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import Input from './Input';
 import Output from './Output';
+import Question from './Question';
 
 
 function NewTransaction(props){
@@ -208,6 +209,8 @@ function NewTransaction(props){
                         })
                     }
                 </div>
+                <hr />
+                <Question question={ transaction_state.question } set_data={ setData } />
                 <hr />
                 <textarea placeholder="Description" value={ transaction_state.description } onChange={ event => {
                     event.persist();
