@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Transaction from './DisplayTransaction';
+import Transaction from '../block/DisplayTransaction';
 
 
 function TransactionHistory(props){
