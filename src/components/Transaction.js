@@ -1,9 +1,9 @@
 import React, { Component, Fragment } from 'react';
 
 import Navigation from './layouts/Navigation';
-import NewTransaction from './layouts/NewTransaction';
-import TransactionHistory from './layouts/TransactionHistory';
-import TransactionHome from './layouts/TransactionHome';
+import NewTransaction from './layouts/transaction/NewTransaction';
+import TransactionHistory from './layouts/transaction/TransactionHistory';
+import TransactionHome from './layouts/transaction/TransactionHome';
 
 
 class Transaction extends Component{

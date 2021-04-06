@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react';
 
 import Navigation from './layouts/Navigation';
-import BlockHome from './layouts/BlockHome';
+import BlockHome from './layouts/block/BlockHome';
 
 
 class Block extends Component{
