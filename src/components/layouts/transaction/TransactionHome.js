@@ -1,8 +1,38 @@
-import React from 'react';
-
+import React, { useState } from 'react';
+import Transaction from '../block/DisplayTransaction';
 
 function TransactionHome(props){
+    const getTransaction = props.getTransaction;
     const changePage = props.change_page;
+    const [ transaction_id, set_transaction_id ] = useState("");
+    const [ transactions, set_transactions ] = useState(null);
+    const [ error_msg, set_error_msg ] = useState("");
+
+    const changeTransactionID = (val) => {
+        set_transaction_id(val);
+        if(val === ""){
+            set_error_msg("");
+            set_transactions(null);
+            return;
+        }
+        getTransaction(val).then(
+            data => {
+                if(data.error){
+                    set_error_msg(data.error);
+                    set_transactions(null);
+                }
+                else{
+                    if(data.transactions.length === 0){
+                        set_error_msg("No transactions found for given transaction ID");
+                        set_transactions(null);
+                    } else {
+                        set_error_msg("");
+                        set_transactions(data.transactions);
+                    }
+                }
+            }
+        )
+    }
 
     return (
         <div className="container transaction">
@@ -43,6 +73,25 @@ function TransactionHome(props){
                 transaction. It is the unique ID referring to your transaction. It can be helpful later for 
                 verifying transaction and to search on blocks. 
             </p>
+            <div className="transaction-history">
+                <h2>Search Transaction</h2>
+                <input type="text" placeholder="Transaction ID" value={transaction_id} onChange={ event => {
+                    event.persist();
+                    changeTransactionID(event.target.value);
+                }} />
+                <p style={{color: "red"}}> &nbsp; &nbsp; { error_msg }</p>
+
+                <div className="transactions">
+                    {
+                        transactions && <h2>Transactions List</h2>
+                    }
+                    {
+                        transactions && transactions.map( (val, i) => {
+                            return <Transaction data={val} key={val.transaction_id} />
+                        })
+                    }
+                </div>
+            </div>
         </div>
     );
 }

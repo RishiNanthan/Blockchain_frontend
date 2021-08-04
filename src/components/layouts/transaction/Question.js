@@ -1,6 +1,20 @@
 import React, { useState, Fragment } from 'react';
 
 
+const findHash = async (data) => {
+    return fetch("/find_hash?", {
+        method: "POST",
+        body: {
+            data: data,
+        }
+    }).then(
+        res => {
+            return res.json();
+        }
+    )
+}
+
+
 export default function Question(props) {
 
     const question = props.question;
@@ -9,9 +23,32 @@ export default function Question(props) {
     const [hide, setHide] = useState(false);
     const [fill, setFill] = useState(false);
     const [answer, setAnswer] = useState("");
+    const [err, setErr] = useState("");
 
     const findHashes = () => {
-
+        findHash(question.question).then(
+            res => {
+                let question_id = res.data;
+                set_data("question", {
+                    key: "question_id",
+                    value: question_id,
+                });
+                let ans = answer + question_id;
+                findHash(ans).then(
+                    res => {
+                        let ans_hash = res.data;
+                        set_data("question", {
+                            key: "answer_hash",
+                            value: ans_hash,
+                        });
+                        setFill(!fill);
+                    }
+                ) 
+            }
+        ).catch(e => {
+            console.log(e);
+            setErr("Server Unavailable");
+        });
     }
     
     return (
@@ -59,7 +96,7 @@ export default function Question(props) {
                             });
                         }
                     } /><br />
-                    <h3 onClick={() => { setFill(!fill) }} style={{color: "red"}}>Fill question hash and answer hash</h3>
+                    <h3 onClick={() => { setFill(!fill) }} style={{color: "green"}}>Fill question hash and answer hash</h3>
                     {
                         fill && 
                         <Fragment>
@@ -71,9 +108,11 @@ export default function Question(props) {
                                 event.persist();
                                 setAnswer(event.target.value);
                             }} />
+                            <p style={{color: "red"}}>{ err }</p>
                             <button onClick={ findHashes }>Find Question Hash, Answer Hash</button>
                         </Fragment>
                     }
+                    
                 </Fragment>
             }
         </div>

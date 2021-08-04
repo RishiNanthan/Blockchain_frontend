@@ -4,6 +4,7 @@ import Transaction from '../block/DisplayTransaction';
 
 function TransactionHistory(props){
 
+    const getTransaction = props.getTransactionHistory;
     const changePage = props.change_page;
     const [ public_key, set_public_key ] = useState("");
     const [ transactions, set_transactions ] = useState([]);
@@ -11,17 +12,12 @@ function TransactionHistory(props){
 
     const changePublicKey = (val) => {
         set_public_key(val);
-        console.log(val);
+
         if(val === ""){
             set_error_msg("");
             return;
         }
-
-        fetch(`/get_client_transactions?public_key=${val}`)
-        .then( res => {
-            return res.json();
-        })
-        .then( data => {
+        getTransaction(val).then( data => {
             set_transactions(data.transactions);
             if(data.transactions.length === 0){
                 set_error_msg(`No Transactions Found for public key: ${ val }`);

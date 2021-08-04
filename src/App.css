@@ -141,3 +141,8 @@ input{
 .link:hover{
     color: lightblue;
 }
+
+
+.transactions{
+    padding-bottom: 100px;
+}

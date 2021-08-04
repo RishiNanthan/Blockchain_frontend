@@ -4,7 +4,7 @@ import Navigation from './layouts/Navigation';
 import NewTransaction from './layouts/transaction/NewTransaction';
 import TransactionHistory from './layouts/transaction/TransactionHistory';
 import TransactionHome from './layouts/transaction/TransactionHome';
-
+import { getTransaction, getTransactionHistory } from '../functionality/APICalls';
 
 class Transaction extends Component{
     constructor(props){
@@ -26,11 +26,11 @@ class Transaction extends Component{
                 <Navigation />
                 {
                     this.state.page === 0 ?
-                    <TransactionHome change_page={ this.changePage } />
+                    <TransactionHome change_page={ this.changePage } getTransaction={ getTransaction } />
                     : this.state.page === 1 ?
                         <NewTransaction change_page={ this.changePage } />
                         :
-                        <TransactionHistory change_page={ this.changePage } />
+                        <TransactionHistory change_page={ this.changePage } getTransactionHistory={ getTransactionHistory } />
                 }
             </Fragment>
         );

@@ -2,6 +2,7 @@ import React, { Component, Fragment } from 'react';
 
 import Navigation from './layouts/Navigation';
 import BlockHome from './layouts/block/BlockHome';
+import { getBlock } from '../functionality/APICalls';
 
 
 class Block extends Component{
@@ -17,7 +18,7 @@ class Block extends Component{
             <Fragment>
                 <Navigation />
                 <div className="container blocks">
-                    <BlockHome />
+                    <BlockHome getBlock={ getBlock } />
                 </div>
             </Fragment>
         );
